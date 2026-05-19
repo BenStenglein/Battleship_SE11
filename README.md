@@ -1,6 +1,8 @@
 # Battleship_SE11
 Repo housing Battleship project implementation and resources
+## AI evaluation 
 ```mermaid
+
 %%{init: { "flowchart": { "curve": "linear" } } }%%
 flowchart LR
 gen(generate random tile)
