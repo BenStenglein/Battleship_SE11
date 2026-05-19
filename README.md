@@ -1,6 +1,6 @@
 # Battleship_SE11
-```mermaid
 Repo housing Battleship project implementation and resources
+```mermaid
 %%{init: { "flowchart": { "curve": "linear" } } }%%
 flowchart LR
 gen(generate random tile)
