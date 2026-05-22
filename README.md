@@ -1,7 +1,6 @@
 # Battleship_SE11
 Repo housing Battleship project implementation and resources
 ## AI evaluation 
-need to change to individual end subgraphs
 ```mermaid
 %%{init: { "flowchart": { "curve": "curve" } } }%%
 flowchart LR
