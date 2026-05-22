@@ -2,6 +2,7 @@
 Repo housing Battleship project implementation and resources
 ## AI evaluation 
 ```mermaid
+
 %%{init: { "flowchart": { "curve": "curve" } } }%%
 flowchart LR
 gen(generate random tile)
@@ -22,7 +23,7 @@ check_tile_up{is the tile up occupied?}
 check_tile_down{is the tile down occupied?}
 check_tile_left{is the tile left occupied?}
 check_tile_right{is the tile right occupied?}
-  
+hit_tile_c[hit the center tile]
   
 
 error{{error state reached}}
@@ -31,7 +32,9 @@ gen-->gen_check
 
 gen_check-->|yes|gen
 
-gen_check -->|no|occpancy_check
+%% gen_check -->|no|occpancy_check
+gen_check-->|no|hit_tile_c
+hit_tile_c-->occpancy_check
 
 occpancy_check-->|no|gen
 
@@ -40,13 +43,19 @@ occpancy_check-->|yes|valid_tile_up
 subgraph checkcycle 
     subgraph up
         subgraph U_P [process]
-            valid_tile_up-->|yes|check_tile_up
+            %% valid_tile_up-->|yes|check_tile_up
+            hit_tile_u1[hit the tile up]
+            valid_tile_up-->|yes|hit_tile_u1
+            hit_tile_u1-->check_tile_up
             check_tile_up-->|yes|validdown
+
             validdown{is the tile down valid}
-            validdown-->|yes|checkdown
+            hit_tile_d1[hit the tile down]
+            validdown-->|yes|hit_tile_d1
+            hit_tile_d1-->checkdown
             checkdown{is the tile down occupied}
         end
-        subgraph U_E [e]
+        subgraph U_E [end]
             U_E1{{init point is somwhere in the vertical center}}
             U_E2{{init point is the bottom of the ship }}
             U_ERR{{logic error reached}}
@@ -59,10 +68,15 @@ subgraph checkcycle
     check_tile_up-->|no|valid_tile_left
     subgraph left
         subgraph L_P [process]
-            valid_tile_left-->|yes|check_tile_left
+            hit_tile_l1[hit the tile left]
+            valid_tile_left-->|yes|hit_tile_l1
+            hit_tile_l1-->check_tile_left
             check_tile_left-->|yes|validright
+
             validright{is the tile right valid}
-            validright-->|yes|checkright
+            hit_tile_r1[hit the tile right]
+            validright-->|yes|hit_tile_r1
+            hit_tile_r1-->checkright
             checkright{is the tile right occupied}
         end
         subgraph L_E [end]
@@ -79,10 +93,15 @@ subgraph checkcycle
     check_tile_left-->|no|valid_tile_down
     subgraph down
         subgraph D_P [process]
-            valid_tile_down-->|yes|check_tile_down
+            hit_tile_d2[hit the tile down]
+            valid_tile_down-->|yes|hit_tile_d2
+            hit_tile_d2-->check_tile_down
             check_tile_down-->|yes|validup
+
             validup{is the tile up valid}
-            validup-->|yes|checkup
+            hit_tile_u2[hit the tile up]
+            validup-->|yes|hit_tile_u2
+            hit_tile_u2-->checkup
             checkup{is the tile up occupied}
         end
         subgraph D_E [end]
@@ -98,9 +117,15 @@ subgraph checkcycle
     check_tile_down-->|no|valid_tile_right
     subgraph right
         subgraph R_P [process]
-            valid_tile_right-->|yes|check_tile_right
+            hit_tile_r2[hit the tile right]
+            valid_tile_right-->|yes|hit_tile_r2
+            hit_tile_r2-->check_tile_right
             check_tile_right-->|yes|validleft
+
             validleft{is the tile left valid}
+            hit_tile_l2[hit the tile up]
+            validleft-->|yes|hit_tile_l2
+            hit_tile_l2-->checkleft
             validleft-->|yes|checkleft
             checkleft{is the tile left occupied}
         end
