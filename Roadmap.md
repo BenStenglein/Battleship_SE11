@@ -1,8 +1,8 @@
 
 ### Current state of Features Roadmap:
 - Setup phase
-    - [ x ] Board gen
-        - [ x ] Graphics
+    - [ * ] Board gen
+        - [ + ] Graphics
         - [ x ] 2d array initialization
     - [ x ] Player placement
     - [ x ] Enemy placement
