@@ -1,13 +1,13 @@
 
 ### Current state of Features Roadmap:
 - Setup phase
-    - [x ] Board gen
-        - [x ] Graphics
-        - [x ] 2d array initialization
-    - [x ] Player placement
-    - [x ] Enemy placement
-        - [x ] Random gen
-        - [x ] Positional evaluation
+    - [ x ] Board gen
+        - [ x ] Graphics
+        - [ x ] 2d array initialization
+    - [ x ] Player placement
+    - [ x ] Enemy placement
+        - [ x ] Random gen
+        - [ x ] Positional evaluation
 - Main game loop
     - [ ] Player attack
     - [ ] Enemy attack
